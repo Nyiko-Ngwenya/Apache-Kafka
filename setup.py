@@ -6,4 +6,4 @@ if client.bootstrap_connected == 'False':
 topicName = 'pythonTwitter'
 client.add_topic(topicName)
 
-print(f"Created Topic called {topicName}")
+# print(f"Created Topic called {topicName}")
