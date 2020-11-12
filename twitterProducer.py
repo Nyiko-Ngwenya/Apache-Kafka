@@ -45,7 +45,7 @@ class MyStreamListener(tweepy.StreamListener):
             
     def on_status(self, status):
         key = 'Python'.encode()
-        information = json.dumps(status._json,default=str).encode()
+        information = json.dumps(status._json).encode()
         producer.send(topicName, information,key=key)
         print('Tweet sent to Kafka')
         
