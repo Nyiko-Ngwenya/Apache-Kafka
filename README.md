@@ -31,3 +31,10 @@ Now to get the actual tweets in a seperate command line
 python twitterProducer.py 
 
 AND WATCH THE TWEETS GO TO YOUR KAFKA TOPIC .
+
+
+FOR ELASTICSEARCH
+
+https://elasticsearch-py.readthedocs.io/en/master/index.html?highlight=Elasticsearch(
+
+    

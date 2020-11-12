@@ -15,13 +15,22 @@ api = tweepy.API(auth)
 from kafka import KafkaProducer
 
 # Define server with port
-bootstrap_servers = 'localhost:9092'
+# bootstrap_servers = 'localhost:9092'
 
 # Define topic name where the message will publish
 # topicName = 'pythonTwitter'
 
 # Initialize producer variable
-producer = KafkaProducer(bootstrap_servers = bootstrap_servers)
+settings = {
+    "bootstrap_servers":'localhost:9092',
+    "compression_type":'snappy',
+    "batch_size":32*1024,
+    "linger_ms":20,
+    "acks":'all',
+    "retries":1000,
+    "max_in_flight_requests_per_connection":5 
+}
+producer = KafkaProducer(**settings)
 
 if producer.bootstrap_connected() == False:
     raise Exception('You arent connected to the kafka server')
