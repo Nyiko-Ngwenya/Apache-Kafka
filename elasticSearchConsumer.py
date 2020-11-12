@@ -14,9 +14,9 @@ if consumer.bootstrap_connected() == False:
 
 es = Elasticsearch(hosts=[host])
 
-i = 100
+# i = 100
 for message in consumer:
-    es.create(index="twitter",id=i,body=message.value,doc_type="tweets")
+    # es.create(index="twitter",id=i,body=message.value,doc_type="tweets")
     print(message.value)
     # i+=1
     # message value and key are raw bytes -- decode if necessary!
@@ -24,6 +24,3 @@ for message in consumer:
     # print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
     #                                     message.offset, message.key,
     #                                     message.value))
-
-"
-"

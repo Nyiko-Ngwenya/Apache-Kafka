@@ -1,8 +1,6 @@
 from elasticsearch import Elasticsearch
 from secrets import main_host,username,password,host
 
-
-port = "443"
 es = Elasticsearch(hosts=[host])
 # es = Elasticsearch(
 #     [main_host],
@@ -13,4 +11,4 @@ es = Elasticsearch(hosts=[host])
 
 es.indices.create(index="twitter")
 
-es.create(index="twitter",id=2,body={"random":2},doc_type="tweets")
+# es.create(index="twitter",id=2,body={"random":2},doc_type="tweets")

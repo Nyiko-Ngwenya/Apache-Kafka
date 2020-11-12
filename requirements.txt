@@ -1,3 +1,4 @@
 tweepy
 kafka-python
 elasticsearch
+snappy

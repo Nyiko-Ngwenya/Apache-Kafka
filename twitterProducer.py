@@ -23,7 +23,7 @@ from kafka import KafkaProducer
 # Initialize producer variable
 settings = {
     "bootstrap_servers":'localhost:9092',
-    "compression_type":'snappy',
+    # "compression_type":'snappy',
     "batch_size":32*1024,
     "linger_ms":20,
     "acks":'all',
@@ -45,17 +45,10 @@ class MyStreamListener(tweepy.StreamListener):
             
     def on_status(self, status):
         key = 'Python'.encode()
-        tweet_dictionary = {
-            'ID': status.user.id,
-            'Name': status.user.name,
-            'Screen Name':status.user.screen_name,
-            'Location': status.user.location,
-            'Text': status.text,
-            'Created At': status.created_at
-        }
-        tweet_dictionary = json.dumps(tweet_dictionary, default=str).encode('utf-8')
-        producer.send(topicName, tweet_dictionary,key=key)
+        information = json.dumps(status._json,default=str).encode()
+        producer.send(topicName, information,key=key)
         print('Tweet sent to Kafka')
+        
 
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
